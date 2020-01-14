@@ -8,9 +8,6 @@
     "start": "ts-node index.ts",
     "start:dev": "nodemon --exec ts-node index.ts"
   },
-  "keywords": [
-    ""
-  ],
   "author": "Andy Bettisworth",
   "license": "MIT",
   "dependencies": {
