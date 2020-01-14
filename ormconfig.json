@@ -1,0 +1,10 @@
+{
+  "type": "sqlite",
+  "database": "db.sqlite3",
+  "synchronize": true,
+  "logging": true,
+  "entities": ["models/**/*.ts"],
+  "cli": {
+    "entitiesDir": "models"
+  }
+}
