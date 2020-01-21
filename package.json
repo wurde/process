@@ -1,7 +1,7 @@
 {
   "name": "process",
   "version": "0.1.0",
-  "description": "A process modeler backend API.",
+  "description": "A backend API for a frontend process modeler.",
   "private": true,
   "scripts": {
     "start": "ts-node server/index.ts",
