@@ -2,11 +2,10 @@
   "name": "process",
   "version": "0.1.0",
   "description": "A process modeler backend API.",
-  "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "ts-node index.ts",
-    "start:dev": "nodemon --exec ts-node index.ts"
+    "start": "ts-node server/index.ts",
+    "start:dev": "nodemon --exec ts-node server/index.ts"
   },
   "author": "Andy Bettisworth",
   "license": "MIT",

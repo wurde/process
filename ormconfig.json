@@ -3,7 +3,7 @@
   "database": "db.sqlite3",
   "synchronize": true,
   "logging": true,
-  "entities": ["models/**/*.ts"],
+  "entities": ["server/models/**/*.ts"],
   "cli": {
     "entitiesDir": "models"
   }
