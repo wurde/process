@@ -26,17 +26,19 @@ describe("Model", () => {
     `;
 
     const data = await request(url, query)
-    expect(data).toStrictEqual({"listModels": [{"title": "datataurant"}]})
+    expect(data).toStrictEqual({"listModels": [{"title": "Restaurant"}]})
   })
 
   it('createModel', async () => {
     const query = `
       mutation {
-        createModel(title: "Cement Manufacturing")
+        createModel(title: "Cement Manufacturing") {
+          title
+        }
       }
     `;
 
     const data = await request(url, query)
-    expect(data).toStrictEqual({"createModel": [{"title": "Cement Manufacturing"}]})
+    expect(data).toStrictEqual({"createModel": {"title": "Cement Manufacturing"}})
   })
 });

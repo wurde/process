@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import { Query, Resolver } from 'type-graphql';
+import { Resolver, Query, Mutation, Arg } from 'type-graphql';
 import Model from '../models/Model';
 
 /**
@@ -13,7 +13,15 @@ import Model from '../models/Model';
 class ModelResolver {
   @Query(() => [Model])
   listModels() {
-    return Model.find()
+    return Model.find();
+  }
+
+  @Mutation(() => Model)
+  async createModel(@Arg('title', () => String) title: string) {
+    const model = new Model();
+    model.title = title;
+    await model.save()
+    return model;
   }
 }
 
