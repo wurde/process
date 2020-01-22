@@ -37,6 +37,14 @@ app.use(cors());
 app.use(express.json());
 
 /**
+ * Mount routes
+ */
+
+app.get('/', (_, res) => {
+  res.sendStatus(200);
+});
+
+/**
  * Bootstrap server
  */
 
