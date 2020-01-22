@@ -3,7 +3,7 @@
  */
 
 export {};
-const { request } = require('graphql-request');
+import { request } from 'graphql-request';
 
 /**
  * Constants

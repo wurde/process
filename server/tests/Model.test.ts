@@ -3,7 +3,8 @@
  */
 
 export {}
-const { request } = require('graphql-request');
+import { request } from 'graphql-request';
+import { setupTestDB } from './helpers';
 
 /**
  * Constants
@@ -16,6 +17,10 @@ const url = 'http://localhost:5000/graphql';
  */
 
 describe("Model", () => {
+  beforeEach(() => {
+    setupTestDB()
+  })
+
   it('listModels', async () => {
     const query = `
       {
