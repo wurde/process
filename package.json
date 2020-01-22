@@ -7,7 +7,7 @@
     "start": "ts-node server/index.ts",
     "start:dev": "nodemon --exec ts-node server/index.ts",
     "build": "tsc",
-    "test": "npm run build ts-node server/tests.ts"
+    "test": "npm run build && jest dist/test/**/*.test.js"
   },
   "author": "Andy Bettisworth",
   "license": "MIT",
@@ -28,6 +28,8 @@
     "typescript": "^3.5.3"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
     "nodemon": "^2.0.2",
     "supertest": "^4.0.2"
   }

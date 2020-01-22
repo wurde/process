@@ -9,3 +9,8 @@ const app = require('../index');
  * Assertions
  */
 
+describe("Hello", () => {
+  it('has tests', () => {
+    expect(false)
+  })
+});
