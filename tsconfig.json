@@ -10,7 +10,7 @@
       "esnext.asynciterable"
     ], /* Specify library files to be included in the compilation. */
     /* Strict Type-Checking Options */
-    "strict": true, /* Enable all strict type-checking options. */
+    // "strict": true, /* Enable all strict type-checking options. */
     "strictPropertyInitialization": false, /* Disable check that ensures class properties are initialized in the constructor. */
     /* Additional Checks */
     "noUnusedLocals": true, /* Report errors on unused locals. */

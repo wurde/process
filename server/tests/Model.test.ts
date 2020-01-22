@@ -12,13 +12,15 @@ import { setupTestDB } from './helpers';
 
 const url = 'http://localhost:5000/graphql';
 
+jest.setTimeout(10000);
+
 /**
  * Assertions
  */
 
 describe("Model", () => {
-  beforeEach(() => {
-    setupTestDB()
+  beforeAll(done => {
+    setupTestDB(done)
   })
 
   it('listModels', async () => {
