@@ -19,7 +19,9 @@ describe("Model", () => {
   it('listModels', async () => {
     const query = `
       {
-        listModels
+        listModels {
+          title
+        }
       }
     `;
 
