@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-export {};
+export {}
 const { request } = require('graphql-request');
 
 /**
@@ -15,15 +15,15 @@ const url = 'http://localhost:5000/graphql';
  * Assertions
  */
 
-describe("Query", () => {
-  it('hello', async () => {
+describe("Model", () => {
+  it('listModels', async () => {
     const query = `
       {
-        hello
+        listModels
       }
     `;
 
     const res = await request(url, query)
-    expect(res).toStrictEqual({"hello": "Hi!"})
+    expect(res).toStrictEqual({"listModels": [{"title": "Restaurant"}]})
   })
 });
