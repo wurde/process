@@ -11,6 +11,6 @@ const app = require('../index');
 
 describe("Hello", () => {
   it('has tests', () => {
-    expect(false)
+    expect(1 + 1).toBe(2)
   })
 });
