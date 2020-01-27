@@ -3,7 +3,7 @@
  */
 
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
-import { ObjectType, Field, Int } from "type-graphql";
+import { ObjectType, Field, ID } from "type-graphql";
 
 /**
  * Define model
@@ -12,11 +12,11 @@ import { ObjectType, Field, Int } from "type-graphql";
 @ObjectType()
 @Entity()
 class Activity extends BaseEntity {
-  @Field(() => Int)
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field(() => Int)
+  @Field(() => ID)
   @Column("int")
   modelID: number;
 
@@ -24,9 +24,9 @@ class Activity extends BaseEntity {
   @Column("text")
   title: string;
 
-  @Field()
+  @Field({ nullable: true })
   @Column("text")
-  description: string;
+  description?: string;
 
   @Field(() => [Activity])
   @Column("text")
@@ -37,4 +37,4 @@ class Activity extends BaseEntity {
  * Export model
  */
 
-export default Activity
+export default Activity;

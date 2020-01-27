@@ -3,7 +3,7 @@
  */
 
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
-import { ObjectType, Field, Int } from "type-graphql";
+import { ObjectType, Field, ID } from "type-graphql";
 
 /**
  * Define model
@@ -12,21 +12,21 @@ import { ObjectType, Field, Int } from "type-graphql";
 @ObjectType()
 @Entity()
 class Job extends BaseEntity {
-  @Field(() => Int)
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field(() => Int)
-  @Column("int")
+  @Field(() => ID)
+  @Column("ID")
   modelID: number;
 
   @Field({ nullable: true })
   @Column("datetime")
-  createdAt: Date;
+  createdAt?: Date;
 }
 
 /**
  * Export model
  */
 
-export default Job
+export default Job;

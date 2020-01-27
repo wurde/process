@@ -3,7 +3,7 @@
  */
 
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
-import { ObjectType, Field, Int } from 'type-graphql';
+import { ObjectType, Field, ID, Int } from 'type-graphql';
 import Resource from './Resource';
 
 /**
@@ -13,21 +13,17 @@ import Resource from './Resource';
 @ObjectType()
 @Entity()
 class Work extends BaseEntity {
-  @Field(() => Int)
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field(() => Int)
+  @Field(() => ID)
   @Column("int")
   activityID: number;
 
-  @Field(() => Int)
+  @Field(() => ID)
   @Column("int")
   jobID: number;
-
-  @Field({ nullable: true })
-  @Column("text")
-  title: string;
 
   @Field()
   @Column("datetime")
@@ -35,7 +31,7 @@ class Work extends BaseEntity {
 
   @Field({ nullable: true })
   @Column("datetime")
-  endAt: Date;
+  endAt?: Date;
 
   @Field(() => [Resource])
   resources: Resource[];
@@ -48,4 +44,4 @@ class Work extends BaseEntity {
  * Export model
  */
 
-export default Work
+export default Work;
