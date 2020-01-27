@@ -21,12 +21,13 @@ class Model extends BaseEntity {
   @Column("text")
   title: string;
 
-  @Field(() => [Activity])
-  activities: Activity[];
+  @Field(() => Activity)
+  @Column("text")
+  initialActivity: Activity;
 }
 
 /**
  * Export model
  */
 
-export default Model
+export default Model;

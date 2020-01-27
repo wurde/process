@@ -11,7 +11,7 @@ import { ObjectType, Field, Int } from "type-graphql";
 
 @ObjectType()
 @Entity()
-class Activity extends BaseEntity {
+class Job extends BaseEntity {
   @Field(() => Int)
   @PrimaryGeneratedColumn()
   id: number;
@@ -20,21 +20,13 @@ class Activity extends BaseEntity {
   @Column("text")
   modelTitle: string;
 
-  @Field()
-  @Column("text")
-  title: string;
-
-  @Field()
-  @Column("text")
-  description: string;
-
-  @Field(() => [Activity])
-  @Column("text")
-  nextActivities: Activity[];
+  @Field({ nullable: true })
+  @Column("datetime")
+  createdAt: Datetime;
 }
 
 /**
  * Export model
  */
 
-export default Activity
+export default Job
