@@ -4,6 +4,7 @@
 
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
 import { ObjectType, Field, ID, Root } from "type-graphql";
+import { MaxLength, Length } from "class-validator";
 // import Activity from './Activity';
 
 /**
@@ -18,8 +19,14 @@ class Model extends BaseEntity {
   id: number;
 
   @Field()
+  @MaxLength(100)
   @Column("text")
   title: string;
+
+  @Field({ nullable: true })
+  @Length(30, 300)
+  @Column("text")
+  description?: string;
 
   @Field()
   allCapsTitle(@Root() parent: Model): string {
