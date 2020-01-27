@@ -22,7 +22,7 @@ class Job extends BaseEntity {
 
   @Field({ nullable: true })
   @Column("datetime")
-  createdAt: Datetime;
+  createdAt: Date;
 }
 
 /**
