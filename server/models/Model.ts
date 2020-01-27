@@ -4,7 +4,7 @@
 
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
 import { ObjectType, Field, Int } from "type-graphql";
-import Activity from './Activity';
+// import Activity from './Activity';
 
 /**
  * Define model
@@ -21,9 +21,9 @@ class Model extends BaseEntity {
   @Column("text")
   title: string;
 
-  @Field(() => Activity)
-  @Column("text")
-  initialActivity: Activity;
+  // @Field(() => Activity)
+  // @Column("text")
+  // initialActivity: Activity;
 }
 
 /**
