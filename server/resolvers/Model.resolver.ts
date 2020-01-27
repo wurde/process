@@ -25,10 +25,8 @@ class ModelResolver {
   }
 
   @Query(() => Model)
-  async findModel(@Arg('title', () => String) title: string) {
-    const m = await Model.findOne({ title });
-    console.log('m', m);
-    return m;
+  findModel(@Arg('title', () => String) title: string) {
+    return Model.findOne({ title });
   }
 }
 

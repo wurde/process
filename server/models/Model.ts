@@ -3,7 +3,7 @@
  */
 
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
-import { ObjectType, Field, ID } from "type-graphql";
+import { ObjectType, Field, ID, Root } from "type-graphql";
 // import Activity from './Activity';
 
 /**
@@ -20,6 +20,11 @@ class Model extends BaseEntity {
   @Field()
   @Column("text")
   title: string;
+
+  @Field()
+  allCapsTitle(@Root() parent: Model): string {
+    return parent.title.toUpperCase();
+  }
 
   // @Field(() => Activity)
   // @Column("text")
