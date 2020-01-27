@@ -24,7 +24,7 @@ class Model extends BaseEntity {
   title: string;
 
   @Field({ nullable: true })
-  @Length(30, 300)
+  @Length(30, 300) // TODO add custom error message
   @Column({ type: "text", nullable: true })
   description?: string;
 

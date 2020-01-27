@@ -24,6 +24,7 @@ class Activity extends BaseEntity {
   @Column("text")
   title: string;
 
+  // TODO add custom validator to ensure contents of title are in description.
   @Field({ nullable: true })
   @Column("text")
   description?: string;
