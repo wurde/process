@@ -4,7 +4,6 @@
 
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
 import { ObjectType, Field, Int } from "type-graphql";
-import Activity from './Activity';
 
 /**
  * Define model
@@ -12,7 +11,7 @@ import Activity from './Activity';
 
 @ObjectType()
 @Entity()
-class Model extends BaseEntity {
+class Activity extends BaseEntity {
   @Field(() => Int)
   @PrimaryGeneratedColumn()
   id: number;
@@ -20,13 +19,10 @@ class Model extends BaseEntity {
   @Field()
   @Column("text")
   title: string;
-
-  @Field(() => [Activity])
-  activities: Activity[];
 }
 
 /**
  * Export model
  */
 
-export default Model
+export default Activity

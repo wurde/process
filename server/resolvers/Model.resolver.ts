@@ -18,10 +18,15 @@ class ModelResolver {
 
   @Mutation(() => Model)
   async createModel(@Arg('title', () => String) title: string) {
-    const model = new Model();
-    model.title = title;
-    await model.save()
-    return model;
+    const m = new Model();
+    m.title = title;
+    await m.save();
+    return m;
+  }
+
+  @Query(() => Model)
+  findModel(@Arg('title', () => String) title: string) {
+    return Model.find({ title });
   }
 }
 

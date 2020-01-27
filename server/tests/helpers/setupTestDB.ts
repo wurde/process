@@ -18,12 +18,28 @@ const DB_PATH = path.resolve(__dirname, '../../../db.sqlite3');
 function setupTestDB(done) {
   const db = new sqlite3.Database(DB_PATH);
 
-  db.exec(`
+  db.exec(
+    `
     DELETE FROM model;
     INSERT INTO model (title) VALUES ("Restaurant");
-  `, () => {
-    db.close(() => done())
-  });
+    INSERT INTO model (title) VALUES ("Podcast");
+    INSERT INTO model (title) VALUES ("Cement Manufacturing");
+
+    DELETE FROM activities;
+    INSERT INTO activities (title) VALUES ("Quarying limestone" },
+    INSERT INTO activities (title) VALUES ("Crushisg limestone" },
+    INSERT INTO activities (title) VALUES ("Blending mix" },
+    INSERT INTO activities (title) VALUES ("Preheating towers" },
+    INSERT INTO activities (title) VALUES ("Kiln" },
+    INSERT INTO activities (title) VALUES ("Slinker cooler" },
+    INSERT INTO activities (title) VALUES ("Grinding mill" },
+    INSERT INTO activities (title) VALUES ("Storage" },
+    INSERT INTO activities (title) VALUES ("Shipment" }
+  `,
+    () => {
+      db.close(() => done());
+    }
+  );
 }
 
 /**
