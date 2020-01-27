@@ -25,7 +25,7 @@ class Model extends BaseEntity {
 
   @Field({ nullable: true })
   @Length(30, 300)
-  @Column("text")
+  @Column({ type: "text", nullable: true })
   description?: string;
 
   @Field()
