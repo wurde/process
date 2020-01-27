@@ -37,14 +37,6 @@ app.use(cors());
 app.use(express.json());
 
 /**
- * Mount routes
- */
-
-app.get('/', (_, res) => {
-  res.sendStatus(200);
-});
-
-/**
  * Bootstrap server
  */
 
@@ -72,7 +64,10 @@ async function bootstrap() {
       schema,
       playground: true
     });
-    server.applyMiddleware({ app });
+    server.applyMiddleware({
+      app,
+      path: '/'
+    });
 
     /**
      * Start server
