@@ -38,7 +38,11 @@ describe("Schema", () => {
 
     const data = await request(url, query)
     expect(data).toStrictEqual({
-      listModels: [{ title: "Restaurant" }, { title: "Podcast" }]
+      listModels: [
+        { title: "Restaurant" },
+        { title: "Podcast" },
+        { title: "Cement Manufacturing" }
+      ]
     });
   })
 
