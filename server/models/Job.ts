@@ -17,7 +17,7 @@ class Job extends BaseEntity {
   id: number;
 
   @Field(() => ID)
-  @Column("ID")
+  @Column("int")
   modelID: number;
 
   @Field({ nullable: true })
