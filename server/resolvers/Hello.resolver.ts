@@ -12,6 +12,11 @@ import { Query, Resolver } from 'type-graphql';
 class Hello {
   @Query(() => String, { name: 'helloWorld' })
   hello() {
+    return 'Hello, world!';
+  }
+
+  @Query(() => String)
+  hi() {
     return 'Hi!';
   }
 }
