@@ -3,7 +3,7 @@
  */
 
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
-import { ObjectType, Field, Int } from "type-graphql";
+import { ObjectType, Field, Int } from 'type-graphql';
 
 /**
  * Define model
@@ -16,12 +16,17 @@ class Resource extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field({nullable: true})
+  @Field()
   @Column("text")
   title: string;
 
-  @Field(() => [Activity])
-  activities: Activity[];
+  @Field({ nullable: true })
+  @Column("text")
+  description: string;
+
+  @Field({ nullable: true })
+  @Column("text")
+  availability: string;
 }
 
 /**

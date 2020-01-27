@@ -16,9 +16,9 @@ class Job extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field()
-  @Column("text")
-  modelTitle: string;
+  @Field(() => Int)
+  @Column("int")
+  modelID: number;
 
   @Field({ nullable: true })
   @Column("datetime")
