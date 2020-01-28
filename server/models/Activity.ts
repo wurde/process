@@ -33,14 +33,14 @@ class Activity extends BaseEntity {
   @Column("text")
   title: string;
 
-  // TODO add custom validator to ensure contents of title are in description.
-  @Field({ nullable: true })
-  @Column("text")
-  description?: string;
+  // // TODO add custom validator to ensure contents of title are in description.
+  // @Field({ nullable: true })
+  // @Column("text")
+  // description?: string;
 
-  @Field(() => [Activity])
-  @ManyToMany(type => Activity)
-  nextActivities: Activity[];
+  // @Field(() => [Activity])
+  // @ManyToMany(type => Activity)
+  // nextActivities: Activity[];
 
   @Field({ nullable: true })
   @CreateDateColumn()

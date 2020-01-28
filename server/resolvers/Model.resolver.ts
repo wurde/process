@@ -2,8 +2,8 @@
  * Dependencies
  */
 
-import { Resolver, Query, Mutation, Arg } from 'type-graphql';
-import Model from '../models/Model';
+import { Resolver, Query, Mutation, Arg } from "type-graphql";
+import Model from "../models/Model";
 
 /**
  * Define resolver

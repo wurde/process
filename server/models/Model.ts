@@ -7,12 +7,16 @@ import {
   PrimaryGeneratedColumn,
   Column,
   BaseEntity,
+  OneToOne,
+  JoinColumn,
   CreateDateColumn,
   UpdateDateColumn
 } from "typeorm";
 
+import { MinLength, MaxLength } from "class-validator";
 import { ObjectType, Field, ID, Root } from "type-graphql";
 import { MaxLength, Length } from "class-validator";
+import { Activity } from "./Activity";
 
 /**
  * Define model
@@ -31,17 +35,18 @@ class Model extends BaseEntity {
   title: string;
 
   @Field({ nullable: true })
-  @Length(30, 300) // TODO add custom error message
+  @MinLength(30, {
+    message: "Description is too short."
+  })
+  @MaxLength(300, {
+    message: "Description is too long."
+  })
   @Column({ type: "text", nullable: true })
   description?: string;
 
-  @Field()
-  allCapsTitle(@Root() parent: Model): string {
-    return parent.title.toUpperCase();
-  }
-
   // @Field(() => Activity)
-  // @Column("text")
+  // @OneToOne(type => Activity)
+  // @JoinColumn()
   // initialActivity: Activity;
 
   @Field({ nullable: true })
@@ -51,6 +56,11 @@ class Model extends BaseEntity {
   @Field({ nullable: true })
   @UpdateDateColumn()
   updatedAt?: Date;
+
+  @Field()
+  allCapsTitle(@Root() parent: Model): string {
+    return parent.title.toUpperCase();
+  }
 }
 
 /**
