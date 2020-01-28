@@ -13,7 +13,6 @@ import {
 
 import { ObjectType, Field, ID, Root } from "type-graphql";
 import { MaxLength, Length } from "class-validator";
-// import Activity from './Activity';
 
 /**
  * Define model

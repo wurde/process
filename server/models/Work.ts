@@ -10,6 +10,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn
 } from "typeorm";
+
 import { ObjectType, Field, ID, Int } from 'type-graphql';
 import Resource from './Resource';
 
