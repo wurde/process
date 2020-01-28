@@ -20,7 +20,7 @@ import { ObjectType, Field, ID } from "type-graphql";
 
 @ObjectType()
 @Entity("activities")
-class Activity extends BaseEntity {
+export class Activity extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id: number;
@@ -50,9 +50,3 @@ class Activity extends BaseEntity {
   @UpdateDateColumn()
   updatedAt?: Date;
 }
-
-/**
- * Export model
- */
-
-export default Activity;

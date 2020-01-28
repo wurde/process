@@ -3,14 +3,15 @@
  */
 
 import { Resolver, Query, Mutation, Arg } from "type-graphql";
-import Model from "../models/Model";
+import { CreateModelInput } from "../inputs/CreateModelInput";
+import { Model } from "../models/Model";
 
 /**
  * Define resolver
  */
 
 @Resolver()
-class ModelResolver {
+export class ModelResolver {
   @Query(() => [Model])
   listModels() {
     return Model.find();
@@ -29,9 +30,3 @@ class ModelResolver {
     return Model.findOne({ title });
   }
 }
-
-/**
- * Export resolver
- */
-
-export default ModelResolver;

@@ -19,7 +19,7 @@ import { ObjectType, Field, ID } from 'type-graphql';
 
 @ObjectType()
 @Entity("resources")
-class Resource extends BaseEntity {
+export class Resource extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id: number;
@@ -44,9 +44,3 @@ class Resource extends BaseEntity {
   @UpdateDateColumn()
   updatedAt?: Date;
 }
-
-/**
- * Export model
- */
-
-export default Resource;

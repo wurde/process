@@ -3,14 +3,14 @@
  */
 
 import { Resolver, Query, Mutation, Arg } from 'type-graphql';
-import Activity from '../models/Activity';
+import { Activity } from '../models/Activity';
 
 /**
  * Define resolver
  */
 
 @Resolver()
-class ActivityResolver {
+export class ActivityResolver {
   @Query(() => [Activity])
   listActivities() {
     return Activity.find();
@@ -29,9 +29,3 @@ class ActivityResolver {
     return Activity.find({ title });
   }
 }
-
-/**
- * Export resolver
- */
-
-export default ActivityResolver;

@@ -9,7 +9,7 @@ import { Query, Resolver } from 'type-graphql';
  */
 
 @Resolver()
-class Hello {
+export class Hello {
   @Query(() => String, {
     name: 'helloWorld',
     description: 'A default greeting.',
@@ -24,9 +24,3 @@ class Hello {
     return 'Hi!';
   }
 }
-
-/**
- * Export resolver
- */
-
-export default Hello;

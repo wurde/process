@@ -24,7 +24,7 @@ import { Activity } from "./Activity";
 
 @ObjectType()
 @Entity("models")
-class Model extends BaseEntity {
+export class Model extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id: number;
@@ -62,9 +62,3 @@ class Model extends BaseEntity {
     return parent.title.toUpperCase();
   }
 }
-
-/**
- * Export model
- */
-
-export default Model;

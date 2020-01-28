@@ -20,7 +20,7 @@ import Resource from './Resource';
 
 @ObjectType()
 @Entity()
-class Work extends BaseEntity {
+export class Work extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id: number;
@@ -58,9 +58,3 @@ class Work extends BaseEntity {
   @UpdateDateColumn()
   updatedAt?: Date;
 }
-
-/**
- * Export model
- */
-
-export default Work;
