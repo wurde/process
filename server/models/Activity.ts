@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   BaseEntity,
+  ManyToMany,
   CreateDateColumn,
   UpdateDateColumn
 } from "typeorm";
