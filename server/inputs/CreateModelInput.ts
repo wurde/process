@@ -16,7 +16,7 @@ export class CreateModelInput implements Partial<Model> {
   title: string;
 
   @Field({ nullable: true })
-  @MinLength(30, {
+  @MinLength(15, {
     message: "Description is too short."
   })
   @MaxLength(300, {

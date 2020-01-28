@@ -18,9 +18,9 @@ export class ModelResolver {
   }
 
   @Mutation(() => Model)
-  async createModel(@Arg("input") createModelInput: CreateModelInput) {
-    const m = new Model();
-    m.title = title;
+  async createModel(@Arg("input") input: CreateModelInput) {
+    let m = new Model();
+    m = Object.assign(m, input);
     await m.save();
     return m;
   }
