@@ -11,14 +11,14 @@ import {
   UpdateDateColumn
 } from "typeorm";
 
-import { ObjectType, Field, ID, Int } from 'type-graphql';
-import Resource from './Resource';
+import { ObjectType, Field, ID, Int } from "type-graphql";
+import { Resource } from "./Resource";
 
 /**
  * Define model
  */
 
-@ObjectType()
+@ObjectType({ description: "A unit of work." })
 @Entity()
 export class Work extends BaseEntity {
   @Field(() => ID)

@@ -22,7 +22,7 @@ import { Activity } from "./Activity";
  * Define model
  */
 
-@ObjectType()
+@ObjectType({ description: "A process model." })
 @Entity("models")
 export class Model extends BaseEntity {
   @Field(() => ID)

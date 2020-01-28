@@ -18,7 +18,7 @@ export class ModelResolver {
   }
 
   @Mutation(() => Model)
-  async createModel(@Arg('title', () => String) title: string) {
+  async createModel(@Arg("input") createModelInput: CreateModelInput) {
     const m = new Model();
     m.title = title;
     await m.save();
@@ -26,7 +26,7 @@ export class ModelResolver {
   }
 
   @Query(() => Model)
-  findModel(@Arg('title', () => String) title: string) {
+  findModel(@Arg("title", () => String) title: string) {
     return Model.findOne({ title });
   }
 }

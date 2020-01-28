@@ -18,7 +18,7 @@ import { ObjectType, Field, ID } from "type-graphql";
  * Define model
  */
 
-@ObjectType()
+@ObjectType({ description: "A process activity." })
 @Entity("activities")
 export class Activity extends BaseEntity {
   @Field(() => ID)

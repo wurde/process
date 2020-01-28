@@ -11,13 +11,13 @@ import {
   UpdateDateColumn
 } from "typeorm";
 
-import { ObjectType, Field, ID } from 'type-graphql';
+import { ObjectType, Field, ID } from "type-graphql";
 
 /**
  * Define model
  */
 
-@ObjectType()
+@ObjectType({ description: "A process resource." })
 @Entity("resources")
 export class Resource extends BaseEntity {
   @Field(() => ID)
