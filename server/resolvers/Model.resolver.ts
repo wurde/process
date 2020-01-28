@@ -19,13 +19,13 @@ export class ModelResolver {
   }
 
   @Query(() => Model, { nullable: true })
-  findModel(@Arg("title", () => String) title: string) {
-    return Model.findOne({ title });
+  findModelByID(@Arg("id", () => Int) id: number) {
+    return Model.findOne({ id });
   }
 
   @Query(() => Model, { nullable: true })
-  findModelByID(@Arg("id", () => Int) id: number) {
-    return Model.findOne({ id });
+  findModelByTitle(@Arg("title", () => String) title: string) {
+    return Model.findOne({ title });
   }
 
   @Mutation(() => Model)

@@ -12,6 +12,7 @@ import {
   UpdateDateColumn
 } from "typeorm";
 
+import { MinLength, MaxLength } from "class-validator";
 import { ObjectType, Field, ID } from "type-graphql";
 
 /**
@@ -33,10 +34,15 @@ export class Activity extends BaseEntity {
   @Column("text")
   title: string;
 
-  // // TODO add custom validator to ensure contents of title are in description.
-  // @Field({ nullable: true })
-  // @Column("text")
-  // description?: string;
+  @Field({ nullable: true })
+  @MinLength(15, {
+    message: "Description is too short."
+  })
+  @MaxLength(300, {
+    message: "Description is too long."
+  })
+  @Column("text", { nullable: true })
+  description?: string;
 
   // @Field(() => [Activity])
   // @ManyToMany(type => Activity)

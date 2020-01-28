@@ -15,7 +15,6 @@ import {
 
 import { MinLength, MaxLength } from "class-validator";
 import { ObjectType, Field, Int, Root } from "type-graphql";
-import { MaxLength, Length } from "class-validator";
 import { Activity } from "./Activity";
 
 /**
