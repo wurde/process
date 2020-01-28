@@ -2,7 +2,15 @@
  * Dependencies
  */
 
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  CreateDateColumn,
+  UpdateDateColumn
+} from "typeorm";
+
 import { ObjectType, Field, ID, Root } from "type-graphql";
 import { MaxLength, Length } from "class-validator";
 // import Activity from './Activity';
@@ -36,6 +44,14 @@ class Model extends BaseEntity {
   // @Field(() => Activity)
   // @Column("text")
   // initialActivity: Activity;
+
+  @Field({ nullable: true })
+  @CreateDateColumn()
+  createdAt?: Date;
+
+  @Field({ nullable: true })
+  @UpdateDateColumn()
+  updatedAt?: Date;
 }
 
 /**

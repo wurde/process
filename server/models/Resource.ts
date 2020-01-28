@@ -2,7 +2,14 @@
  * Dependencies
  */
 
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  CreateDateColumn,
+  UpdateDateColumn
+} from "typeorm";
 import { ObjectType, Field, ID } from 'type-graphql';
 
 /**
@@ -27,6 +34,14 @@ class Resource extends BaseEntity {
   @Field({ nullable: true })
   @Column("text")
   availability?: string;
+
+  @Field({ nullable: true })
+  @CreateDateColumn()
+  createdAt?: Date;
+
+  @Field({ nullable: true })
+  @UpdateDateColumn()
+  updatedAt?: Date;
 }
 
 /**

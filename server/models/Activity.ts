@@ -2,7 +2,15 @@
  * Dependencies
  */
 
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  CreateDateColumn,
+  UpdateDateColumn
+} from "typeorm";
+
 import { ObjectType, Field, ID } from "type-graphql";
 
 /**
@@ -30,8 +38,16 @@ class Activity extends BaseEntity {
   description?: string;
 
   @Field(() => [Activity])
-  @Column("text")
+  @ManyToMany(type => Activity)
   nextActivities: Activity[];
+
+  @Field({ nullable: true })
+  @CreateDateColumn()
+  createdAt?: Date;
+
+  @Field({ nullable: true })
+  @UpdateDateColumn()
+  updatedAt?: Date;
 }
 
 /**

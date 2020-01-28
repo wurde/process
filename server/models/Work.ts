@@ -2,7 +2,14 @@
  * Dependencies
  */
 
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  CreateDateColumn,
+  UpdateDateColumn
+} from "typeorm";
 import { ObjectType, Field, ID, Int } from 'type-graphql';
 import Resource from './Resource';
 
@@ -38,6 +45,14 @@ class Work extends BaseEntity {
 
   @Field(() => Int)
   duration: number;
+
+  @Field({ nullable: true })
+  @CreateDateColumn()
+  createdAt?: Date;
+
+  @Field({ nullable: true })
+  @UpdateDateColumn()
+  updatedAt?: Date;
 }
 
 /**
