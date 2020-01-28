@@ -13,7 +13,7 @@ import {
 } from "typeorm";
 
 import { MinLength, MaxLength } from "class-validator";
-import { ObjectType, Field, ID } from "type-graphql";
+import { ObjectType, Field, Int } from "type-graphql";
 
 /**
  * Define model
@@ -22,11 +22,11 @@ import { ObjectType, Field, ID } from "type-graphql";
 @ObjectType({ description: "A process activity." })
 @Entity("activities")
 export class Activity extends BaseEntity {
-  @Field(() => ID)
+  @Field(() => Int)
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field(() => ID)
+  @Field(() => Int)
   @Column("int")
   modelID: number;
 
