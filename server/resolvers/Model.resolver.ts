@@ -18,6 +18,11 @@ export class ModelResolver {
     return Model.find();
   }
 
+  @Query(() => Model)
+  findModel(@Arg("title", () => String) title: string) {
+    return Model.findOne({ title });
+  }
+
   @Mutation(() => Model)
   async createModel(@Arg("input") input: CreateModelInput) {
     let m = new Model();
@@ -37,11 +42,16 @@ export class ModelResolver {
       await m.save();
       return m;
     }
-    return null
+    return null;
   }
 
-  @Query(() => Model)
-  findModel(@Arg("title", () => String) title: string) {
-    return Model.findOne({ title });
+  @Mutation(() => Boolean)
+  async removeModel(@Arg("id", () => Int) id: number) {
+    let m = await Model.findOne(id);
+    if (m) {
+      await m.remove();
+      return true;
+    }
+    return false;
   }
 }
