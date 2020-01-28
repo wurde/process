@@ -2,8 +2,8 @@
  * Dependencies
  */
 
-import { Resolver, Query } from 'type-graphql';
-import { Job } from '../models/Job';
+import { Resolver, Query } from "type-graphql";
+import { Job } from "../models/Job";
 
 /**
  * Define resolver

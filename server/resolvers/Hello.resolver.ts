@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import { Query, Resolver } from 'type-graphql';
+import { Query, Resolver } from "type-graphql";
 
 /**
  * Define resolver
