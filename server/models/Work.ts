@@ -26,6 +26,9 @@ class Work extends BaseEntity {
   id: number;
 
   @Field(() => ID)
+  modelID: number;
+
+  @Field(() => ID)
   @Column("int")
   activityID: number;
 
