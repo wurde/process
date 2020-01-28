@@ -2,8 +2,9 @@
  * Dependencies
  */
 
-import { Resolver, Query, Mutation, Arg } from "type-graphql";
+import { Resolver, Query, Mutation, Arg, Int } from "type-graphql";
 import { CreateModelInput } from "../inputs/CreateModelInput";
+import { UpdateModelInput } from "../inputs/UpdateModelInput";
 import { Model } from "../models/Model";
 
 /**
@@ -23,6 +24,20 @@ export class ModelResolver {
     m = Object.assign(m, input);
     await m.save();
     return m;
+  }
+
+  @Mutation(() => Model)
+  async updateModel(
+    @Arg("id", () => Int) id: number,
+    @Arg("input") input: UpdateModelInput
+  ) {
+    let m = await Model.findOne(id);
+    if (m) {
+      m = Object.assign(m, input);
+      await m.save();
+      return m;
+    }
+    return null
   }
 
   @Query(() => Model)
