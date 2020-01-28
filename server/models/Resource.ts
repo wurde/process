@@ -10,7 +10,7 @@ import { ObjectType, Field, ID } from 'type-graphql';
  */
 
 @ObjectType()
-@Entity()
+@Entity("resources")
 class Resource extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()

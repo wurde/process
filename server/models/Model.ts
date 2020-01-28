@@ -12,7 +12,7 @@ import { MaxLength, Length } from "class-validator";
  */
 
 @ObjectType()
-@Entity()
+@Entity("models")
 class Model extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
