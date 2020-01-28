@@ -26,7 +26,7 @@ export class ModelResolver {
     return m;
   }
 
-  @Mutation(() => Model)
+  @Mutation(() => Model, { nullable: true })
   async updateModel(
     @Arg("id", () => Int) id: number,
     @Arg("input") input: UpdateModelInput
