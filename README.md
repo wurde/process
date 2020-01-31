@@ -1,6 +1,6 @@
 # Process
 
-A backend server for process modeling applications. It stores enough information to calculate bottlenecks and resource utilization. When sampling job times you can use start/end times or use explicit durations.
+A backend server for process modeling. It stores enough information to calculate bottlenecks and resource utilization. When sampling job times you can use start/end times or use explicit work duration.
 
 ## Models
 
@@ -11,6 +11,8 @@ Our server has 5 unique types:
 - [Model](./server/models/Model.ts)
 - [Resource](./server/models/Resource.ts)
 - [Work](./server/models/Work.ts)
+
+A single process `Model` can have one or more `Activities` chained together in a directed graph. A `Job` is a unit of work that flows through the model from beginning to end. As a job enters each activity the work completed is recorded as start/end times or as an explicit duration.
 
 ## Backend API
 
