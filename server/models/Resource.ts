@@ -20,27 +20,27 @@ import { ObjectType, Field, ID } from "type-graphql";
 @ObjectType({ description: "A process resource." })
 @Entity("resources")
 export class Resource extends BaseEntity {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn()
-  id: number;
+    @Field(() => ID)
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Field()
-  @Column("text")
-  title: string;
+    @Field()
+    @Column("text")
+    title: string;
 
-  @Field({ nullable: true })
-  @Column("text")
-  description?: string;
+    @Field({ nullable: true })
+    @Column("text")
+    description?: string;
 
-  @Field({ nullable: true })
-  @Column("text")
-  availability?: string;
+    @Field({ nullable: true })
+    @Column("text")
+    availability?: string;
 
-  @Field({ nullable: true })
-  @CreateDateColumn()
-  createdAt?: Date;
+    @Field({ nullable: true })
+    @CreateDateColumn()
+    createdAt?: Date;
 
-  @Field({ nullable: true })
-  @UpdateDateColumn()
-  updatedAt?: Date;
+    @Field({ nullable: true })
+    @UpdateDateColumn()
+    updatedAt?: Date;
 }

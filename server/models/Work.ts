@@ -21,40 +21,40 @@ import { Resource } from "./Resource";
 @ObjectType({ description: "A unit of work." })
 @Entity()
 export class Work extends BaseEntity {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn()
-  id: number;
+    @Field(() => ID)
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Field(() => ID)
-  modelID: number;
+    @Field(() => ID)
+    modelID: number;
 
-  @Field(() => ID)
-  @Column("int")
-  activityID: number;
+    @Field(() => ID)
+    @Column("int")
+    activityID: number;
 
-  @Field(() => ID)
-  @Column("int")
-  jobID: number;
+    @Field(() => ID)
+    @Column("int")
+    jobID: number;
 
-  @Field()
-  @Column("datetime")
-  startAt: Date;
+    @Field()
+    @Column("datetime")
+    startAt: Date;
 
-  @Field({ nullable: true })
-  @Column("datetime")
-  endAt?: Date;
+    @Field({ nullable: true })
+    @Column("datetime")
+    endAt?: Date;
 
-  @Field(() => [Resource])
-  resources: Resource[];
+    @Field(() => [Resource])
+    resources: Resource[];
 
-  @Field(() => Int)
-  duration: number;
+    @Field(() => Int)
+    duration: number;
 
-  @Field({ nullable: true })
-  @CreateDateColumn()
-  createdAt?: Date;
+    @Field({ nullable: true })
+    @CreateDateColumn()
+    createdAt?: Date;
 
-  @Field({ nullable: true })
-  @UpdateDateColumn()
-  updatedAt?: Date;
+    @Field({ nullable: true })
+    @UpdateDateColumn()
+    updatedAt?: Date;
 }

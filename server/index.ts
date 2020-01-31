@@ -41,43 +41,43 @@ app.use(express.json());
  */
 
 async function bootstrap() {
-  try {
-    /**
-     * Initialize ORM
-     */
+    try {
+        /**
+         * Initialize ORM
+         */
 
-    await createConnection();
+        await createConnection();
 
-    /**
-     * Define schema
-     */
+        /**
+         * Define schema
+         */
 
-    const schema = await buildSchema({
-      resolvers: [__dirname + '/**/*.resolver.ts']
-    });
+        const schema = await buildSchema({
+            resolvers: [__dirname + '/**/*.resolver.ts']
+        });
 
-    /**
-     * Define and mount GraphQL server
-     */
+        /**
+         * Define and mount GraphQL server
+         */
 
-    const server = new ApolloServer({
-      schema,
-      playground: true
-    });
-    server.applyMiddleware({
-      app,
-      path: '/'
-    });
+        const server = new ApolloServer({
+            schema,
+            playground: true
+        });
+        server.applyMiddleware({
+            app,
+            path: '/'
+        });
 
-    /**
-     * Start server
-     */
+        /**
+         * Start server
+         */
 
-    app.listen(port, () => {
-      console.log(`Express running on port ${port}`);
-    });
+        app.listen(port, () => {
+            console.log(`Express running on port ${port}`);
+        });
   } catch (err) {
-    console.error(err);
+        console.error(err);
   }
 }
 

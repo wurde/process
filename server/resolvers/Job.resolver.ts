@@ -11,8 +11,8 @@ import { Job } from "../models/Job";
 
 @Resolver()
 export class JobResolver {
-  @Query(() => [Job])
-  listJobs() {
-    return Job.find();
-  }
+    @Query(() => [Job])
+    listJobs() {
+        return Job.find();
+    }
 }

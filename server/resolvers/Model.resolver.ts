@@ -13,50 +13,50 @@ import { Model } from "../models/Model";
 
 @Resolver()
 export class ModelResolver {
-  @Query(() => [Model])
-  listModels() {
-    return Model.find();
-  }
-
-  @Query(() => Model, { nullable: true })
-  findModelByID(@Arg("id", () => Int) id: number) {
-    return Model.findOne({ id });
-  }
-
-  @Query(() => Model, { nullable: true })
-  findModelByTitle(@Arg("title", () => String) title: string) {
-    return Model.findOne({ title });
-  }
-
-  @Mutation(() => Model)
-  async createModel(@Arg("input") input: CreateModelInput) {
-    let m = new Model();
-    m = Object.assign(m, input);
-    await m.save();
-    return m;
-  }
-
-  @Mutation(() => Model, { nullable: true })
-  async updateModel(
-    @Arg("id", () => Int) id: number,
-    @Arg("input") input: UpdateModelInput
-  ) {
-    let m = await Model.findOne(id);
-    if (m) {
-      m = Object.assign(m, input);
-      await m.save();
-      return m;
+    @Query(() => [Model])
+    listModels() {
+        return Model.find();
     }
-    return null;
-  }
 
-  @Mutation(() => Boolean)
-  async removeModel(@Arg("id", () => Int) id: number) {
-    let m = await Model.findOne(id);
-    if (m) {
-      await m.remove();
-      return true;
+    @Query(() => Model, { nullable: true })
+    findModelByID(@Arg("id", () => Int) id: number) {
+        return Model.findOne({ id });
     }
-    return false;
-  }
+
+    @Query(() => Model, { nullable: true })
+    findModelByTitle(@Arg("title", () => String) title: string) {
+        return Model.findOne({ title });
+    }
+
+    @Mutation(() => Model)
+    async createModel(@Arg("input") input: CreateModelInput) {
+        let m = new Model();
+        m = Object.assign(m, input);
+        await m.save();
+        return m;
+    }
+
+    @Mutation(() => Model, { nullable: true })
+    async updateModel(
+        @Arg("id", () => Int) id: number,
+        @Arg("input") input: UpdateModelInput
+    ) {
+        let m = await Model.findOne(id);
+        if (m) {
+            m = Object.assign(m, input);
+            await m.save();
+            return m;
+        }
+        return null;
+    }
+
+    @Mutation(() => Boolean)
+    async removeModel(@Arg("id", () => Int) id: number) {
+        let m = await Model.findOne(id);
+        if (m) {
+            await m.remove();
+            return true;
+        }
+        return false;
+    }
 }

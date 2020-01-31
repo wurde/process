@@ -23,68 +23,68 @@ jest.setTimeout(10000);
  */
 
 describe("Schema", () => {
-  beforeAll(done => {
-    setupTestDB(done)
-  })
+    beforeAll(done => {
+        setupTestDB(done)
+    })
 
-  it('Query.listModels', async () => {
-    const query = `
-      {
-        listModels {
-          title
-        }
-      }
-    `;
+    it('Query.listModels', async () => {
+        const query = `
+            {
+                listModels {
+                    title
+                }
+            }
+        `;
 
-    const data = await request(url, query)
-    expect(data).toStrictEqual({
-      listModels: [
-        { title: "Restaurant" },
-        { title: "Podcast" },
-        { title: "Cement Manufacturing" }
-      ]
-    });
-  })
+            const data = await request(url, query)
+            expect(data).toStrictEqual({
+                listModels: [
+                    { title: "Restaurant" },
+                    { title: "Podcast" },
+                    { title: "Cement Manufacturing" }
+                ]
+            });
+    })
 
-  it('Mutation.createModel', async () => {
-    const query = `
-      mutation {
-        createModel(title: "Cement Manufacturing") {
-          title
-        }
-      }
-    `;
+    it('Mutation.createModel', async () => {
+        const query = `
+            mutation {
+                createModel(title: "Cement Manufacturing") {
+                    title
+                }
+            }
+        `;
 
-    const data = await request(url, query)
-    expect(data).toStrictEqual({"createModel": {"title": "Cement Manufacturing"}})
-  })
+        const data = await request(url, query)
+        expect(data).toStrictEqual({"createModel": {"title": "Cement Manufacturing"}})
+    })
 
-  it('Query.findModel.activities', async () => {
-    const query = `
-      query {
-        findModel(title: "Cement Manufacturing") {
-          title
-          activities {
-            title
-          }
-        }
-      }
-    `;
+    it('Query.findModel.activities', async () => {
+        const query = `
+            query {
+                findModel(title: "Cement Manufacturing") {
+                    title
+                    activities {
+                        title
+                    }
+                }
+            }
+        `;
 
-    const data = await request(url, query)
-    expect(data).toStrictEqual({"findModel": {
-      "title": "Cement Manufacturing",
-      "activities": [
-        { "title": "Quarying limestone" },
-        { "title": "Crushisg limestone" },
-        { "title": "Blending mix" },
-        { "title": "Preheating towers" },
-        { "title": "Kiln" },
-        { "title": "Slinker cooler" },
-        { "title": "Grinding mill" },
-        { "title": "Storage" },
-        { "title": "Shipment" }
-      ]
-    }})
-  })
+        const data = await request(url, query)
+        expect(data).toStrictEqual({"findModel": {
+            "title": "Cement Manufacturing",
+            "activities": [
+                { "title": "Quarying limestone" },
+                { "title": "Crushisg limestone" },
+                { "title": "Blending mix" },
+                { "title": "Preheating towers" },
+                { "title": "Kiln" },
+                { "title": "Slinker cooler" },
+                { "title": "Grinding mill" },
+                { "title": "Storage" },
+                { "title": "Shipment" }
+            ]
+        }})
+    })
 });

@@ -12,15 +12,15 @@ import { Model } from "../models/Model";
 
 @InputType({ description: "Model data changes." })
 export class UpdateModelInput implements Partial<Model> {
-  @Field({ nullable: true })
-  title?: string;
+    @Field({ nullable: true })
+    title?: string;
 
-  @Field({ nullable: true })
-  @MinLength(15, {
-    message: "Description is too short."
-  })
-  @MaxLength(300, {
-    message: "Description is too long."
-  })
-  description?: string;
+    @Field({ nullable: true })
+    @MinLength(15, {
+        message: "Description is too short."
+    })
+    @MaxLength(300, {
+        message: "Description is too long."
+    })
+    description?: string;
 }

@@ -11,8 +11,8 @@ import { Work } from "../models/Work";
 
 @Resolver()
 export class WorkResolver {
-  @Query(() => [Work])
-  listWork() {
-    return Work.find();
-  }
+    @Query(() => [Work])
+    listWork() {
+        return Work.find();
+    }
 }

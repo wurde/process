@@ -12,15 +12,15 @@ import { Activity } from "../models/Activity";
 
 @InputType({ description: "Activity data changes." })
 export class UpdateActivityInput implements Partial<Activity> {
-  @Field({ nullable: true })
-  title?: string;
+    @Field({ nullable: true })
+    title?: string;
 
-  @Field({ nullable: true })
-  @MinLength(15, {
-    message: "Description is too short."
-  })
-  @MaxLength(300, {
-    message: "Description is too long."
-  })
-  description?: string;
+    @Field({ nullable: true })
+    @MinLength(15, {
+        message: "Description is too short."
+    })
+    @MaxLength(300, {
+        message: "Description is too long."
+    })
+    description?: string;
 }

@@ -11,8 +11,8 @@ import { Resource } from "../models/Resource";
 
 @Resolver()
 export class ResourceResolver {
-  @Query(() => [Resource])
-  listResources() {
-    return Resource.find();
-  }
+    @Query(() => [Resource])
+    listResources() {
+        return Resource.find();
+    }
 }

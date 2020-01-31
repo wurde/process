@@ -22,37 +22,37 @@ import { ObjectType, Field, Int } from "type-graphql";
 @ObjectType({ description: "A process activity." })
 @Entity("activities")
 export class Activity extends BaseEntity {
-  @Field(() => Int)
-  @PrimaryGeneratedColumn()
-  id: number;
+    @Field(() => Int)
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Field(() => Int)
-  @Column("int")
-  modelID: number;
+    @Field(() => Int)
+    @Column("int")
+    modelID: number;
 
-  @Field()
-  @Column("text")
-  title: string;
+    @Field()
+    @Column("text")
+    title: string;
 
-  @Field({ nullable: true })
-  @MinLength(15, {
-    message: "Description is too short."
-  })
-  @MaxLength(300, {
-    message: "Description is too long."
-  })
-  @Column("text", { nullable: true })
-  description?: string;
+    @Field({ nullable: true })
+    @MinLength(15, {
+      message: "Description is too short."
+    })
+    @MaxLength(300, {
+      message: "Description is too long."
+    })
+    @Column("text", { nullable: true })
+    description?: string;
 
-  // @Field(() => [Activity])
-  // @ManyToMany(type => Activity)
-  // nextActivities: Activity[];
+    // @Field(() => [Activity])
+    // @ManyToMany(type => Activity)
+    // nextActivities: Activity[];
 
-  @Field({ nullable: true })
-  @CreateDateColumn()
-  createdAt?: Date;
+    @Field({ nullable: true })
+    @CreateDateColumn()
+    createdAt?: Date;
 
-  @Field({ nullable: true })
-  @UpdateDateColumn()
-  updatedAt?: Date;
+    @Field({ nullable: true })
+    @UpdateDateColumn()
+    updatedAt?: Date;
 }

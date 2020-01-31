@@ -17,13 +17,13 @@ const url = 'http://localhost:5000/graphql';
 
 describe("Query", () => {
   it('hello', async () => {
-    const query = `
-      {
-        hello
-      }
-    `;
+        const query = `
+            {
+                hello
+            }
+        `;
 
-    const res = await request(url, query)
-    expect(res).toStrictEqual({"hello": "Hi!"})
+        const res = await request(url, query)
+        expect(res).toStrictEqual({"hello": "Hi!"})
   })
 });
