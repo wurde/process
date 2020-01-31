@@ -1,6 +1,6 @@
 # Process
 
-A backend API for a frontend process modeler. It archives and retrieves data for calculating bottlenecks and resource utilization. You can chain activities together to form processes of arbitrary length. When sampling job times you can use start/end times or the explicit duration.
+A backend server for process modeling applications. It stores enough information to calculate bottlenecks and resource utilization. When sampling job times you can use start/end times or use explicit durations.
 
 ## Backend API
 
