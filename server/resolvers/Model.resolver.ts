@@ -40,7 +40,7 @@ export class ModelResolver {
     async updateModel(
         @Arg("id", () => Int) id: number,
         @Arg("input") input: UpdateModelInput
-    ): Promise<Model | null>{
+    ): Promise<Model | null> {
         let m = await Model.findOne(id);
         if (m) {
             m = Object.assign(m, input);

@@ -15,12 +15,12 @@ import { Model } from "../models/Model";
 @Resolver()
 export class ActivityResolver {
     @Query(() => Activity, { nullable: true })
-    findActivityByID(@Arg("id", () => Int) id: number) {
+    findActivityByID(@Arg("id", () => Int) id: number): Promise<Activity> {
         return Activity.findOne({ id });
     }
 
     @Mutation(() => Activity)
-    async createActivity(@Arg("input") input: CreateActivityInput) {
+    async createActivity(@Arg("input") input: CreateActivityInput): Promise<Activity>{
         let m = await Model.findOne(input.modelID);
         if (!m) throw new Error("Model not found.")
 
@@ -34,7 +34,7 @@ export class ActivityResolver {
     async updateActivity(
         @Arg("id", () => Int) id: number,
         @Arg("input") input: UpdateActivityInput
-    ) {
+    ): Promise<Activity | null> {
         let a = await Activity.findOne(id);
         if (a) {
             a = Object.assign(a, input);
@@ -45,7 +45,7 @@ export class ActivityResolver {
     }
 
     @Mutation(() => Boolean)
-    async removeActivity(@Arg("id", () => Int) id: number) {
+    async removeActivity(@Arg("id", () => Int) id: number): boolean {
         let a = await Activity.findOne(id);
         if (a) {
             await a.remove();
