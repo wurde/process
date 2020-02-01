@@ -25,6 +25,7 @@ export class ActivityResolver {
         if (!m) throw new Error("Model not found.")
 
         let a = new Activity();
+        a.model = m
         a = Object.assign(a, input);
         await a.save();
         return a;

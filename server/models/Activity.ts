@@ -7,11 +7,13 @@ import {
     PrimaryGeneratedColumn,
     Column,
     BaseEntity,
+    ManyToOne,
     ManyToMany,
     CreateDateColumn,
     UpdateDateColumn
 } from "typeorm";
 
+import { Model } from "./Model";
 import { MinLength, MaxLength } from "class-validator";
 import { ObjectType, Field, Int } from "type-graphql";
 
@@ -26,9 +28,9 @@ export class Activity extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Field(() => Int)
-    @Column("int")
-    modelID: number;
+    @Field(() => Model)
+    @ManyToOne(type => Model)
+    model: Model;
 
     @Field()
     @Column("text")

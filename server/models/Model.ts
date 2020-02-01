@@ -8,6 +8,7 @@ import {
     Column,
     BaseEntity,
     OneToOne,
+    OneToMany,
     JoinColumn,
     CreateDateColumn,
     UpdateDateColumn
@@ -39,10 +40,15 @@ export class Model extends BaseEntity {
     @Column({ type: "text", nullable: true })
     description?: string;
 
-    // @Field(() => Activity)
-    // @OneToOne(type => Activity)
-    // @JoinColumn()
-    // initialActivity: Activity;
+    @Field(() => Activity)
+    @OneToOne(type => Activity)
+    @JoinColumn()
+    initialActivity: Activity;
+
+    @Field(() => [Activity])
+    @OneToMany(type => Activity, activity => activity.model)
+    @JoinColumn()
+    activities: Activity[];
 
     @Field({ nullable: true })
     @CreateDateColumn()
