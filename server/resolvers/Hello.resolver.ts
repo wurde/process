@@ -15,12 +15,12 @@ export class Hello {
         description: 'A default greeting.',
         nullable: true
     })
-    hello() {
+    hello(): string {
         return 'Hello, world!';
     }
 
     @Query(() => String)
-    hi() {
+    hi(): string {
         return 'Hi!';
     }
 }
