@@ -40,12 +40,12 @@ export class Model extends BaseEntity {
     @Column({ type: "text", nullable: true })
     description?: string;
 
-    @Field(() => Activity)
+    @Field(() => Activity, { nullable: true })
     @OneToOne(type => Activity)
     @JoinColumn()
     initialActivity: Activity;
 
-    @Field(() => [Activity])
+    @Field(() => [Activity], { nullable: true })
     @OneToMany(type => Activity, activity => activity.model)
     @JoinColumn()
     activities: Activity[];
