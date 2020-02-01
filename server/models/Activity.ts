@@ -44,10 +44,10 @@ export class Activity extends BaseEntity {
     @Column("text", { nullable: true })
     description?: string;
 
-    @Field(() => [Activity])
+    @Field(() => [Activity], { nullable: true })
     @ManyToMany(type => Activity)
     @JoinTable({ name: "next_activities" })
-    nextActivities: Activity[];
+    nextActivities?: Activity[];
 
     @Column(type => Timestamp)
     timestamp: Timestamp;
