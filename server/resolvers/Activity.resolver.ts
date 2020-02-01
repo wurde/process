@@ -23,11 +23,11 @@ export class ActivityResolver {
     async createActivity(@Arg("input") input: CreateActivityInput): Promise<Activity>{
         let m = await Model.findOne(input.modelID);
         if (!m) throw new Error("Model not found.")
+        delete input.modelID;
 
         let a = new Activity();
-        // a = Object.assign(a, input);
-        // a.model = m
-        a.title = "Testing"
+        a = Object.assign(a, input);
+        a.model = m
         await a.save();
         return a;
     }
