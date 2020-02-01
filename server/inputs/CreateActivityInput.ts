@@ -19,11 +19,7 @@ export class CreateActivityInput implements Partial<Activity> {
     title: string;
 
     @Field({ nullable: true })
-    @MinLength(15, {
-        message: "Description is too short."
-    })
-    @MaxLength(300, {
-        message: "Description is too long."
-    })
+    @MinLength(15, { message: "Description is too short." })
+    @MaxLength(300, { message: "Description is too long." })
     description?: string;
 }
