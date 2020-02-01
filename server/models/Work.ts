@@ -6,12 +6,11 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
-    BaseEntity,
-    CreateDateColumn,
-    UpdateDateColumn
+    BaseEntity
 } from "typeorm";
 
 import { ObjectType, Field, ID, Int } from "type-graphql";
+import { Timestamp } from "./embed/Timestamp";
 import { Resource } from "./Resource";
 
 /**
@@ -50,11 +49,6 @@ export class Work extends BaseEntity {
     @Field(() => Int)
     duration: number;
 
-    @Field({ nullable: true })
-    @CreateDateColumn()
-    createdAt?: Date;
-
-    @Field({ nullable: true })
-    @UpdateDateColumn()
-    updatedAt?: Date;
+    @Column(type => Timestamp)
+    timestamp: Timestamp;
 }

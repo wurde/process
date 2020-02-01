@@ -10,13 +10,13 @@ import {
     ManyToOne,
     ManyToMany,
     JoinTable,
-    CreateDateColumn,
-    UpdateDateColumn
+    JoinColumn
 } from "typeorm";
 
-import { Model } from "./Model";
 import { MinLength, MaxLength } from "class-validator";
 import { ObjectType, Field, Int } from "type-graphql";
+import { Timestamp } from "./embed/Timestamp";
+import { Model } from "./Model";
 
 /**
  * Define model
@@ -31,6 +31,7 @@ export class Activity extends BaseEntity {
 
     @Field(() => Model)
     @ManyToOne(type => Model)
+    @JoinColumn({ name: "model_id" })
     model: Model;
 
     @Field()
@@ -48,11 +49,6 @@ export class Activity extends BaseEntity {
     @JoinTable({ name: "next_activities" })
     nextActivities: Activity[];
 
-    @Field({ nullable: true })
-    @CreateDateColumn()
-    createdAt?: Date;
-
-    @Field({ nullable: true })
-    @UpdateDateColumn()
-    updatedAt?: Date;
+    @Column(type => Timestamp)
+    timestamp: Timestamp;
 }

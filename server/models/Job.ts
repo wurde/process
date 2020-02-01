@@ -6,12 +6,11 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
-    BaseEntity,
-    CreateDateColumn,
-    UpdateDateColumn
+    BaseEntity
 } from "typeorm";
 
 import { ObjectType, Field, ID } from "type-graphql";
+import { Timestamp } from "./embed/Timestamp";
 
 /**
  * Define model
@@ -28,11 +27,6 @@ export class Job extends BaseEntity {
     @Column("int")
     modelID: number;
 
-    @Field({ nullable: true })
-    @CreateDateColumn()
-    createdAt?: Date;
-
-    @Field({ nullable: true })
-    @UpdateDateColumn()
-    updatedAt?: Date;
+    @Column(type => Timestamp)
+    timestamp: Timestamp;
 }

@@ -9,13 +9,12 @@ import {
     BaseEntity,
     OneToOne,
     OneToMany,
-    JoinColumn,
-    CreateDateColumn,
-    UpdateDateColumn
+    JoinColumn
 } from "typeorm";
 
 import { MinLength, MaxLength } from "class-validator";
 import { ObjectType, Field, Int, Root } from "type-graphql";
+import { Timestamp } from "./embed/Timestamp";
 import { Activity } from "./Activity";
 
 /**
@@ -50,13 +49,8 @@ export class Model extends BaseEntity {
     @JoinColumn()
     activities: Activity[];
 
-    @Field({ nullable: true })
-    @CreateDateColumn()
-    createdAt?: Date;
-
-    @Field({ nullable: true })
-    @UpdateDateColumn()
-    updatedAt?: Date;
+    @Column(type => Timestamp)
+    timestamp: Timestamp;
 
     @Field()
     allCapsTitle(@Root() parent: Model): string {
