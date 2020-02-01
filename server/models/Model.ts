@@ -46,7 +46,6 @@ export class Model extends BaseEntity {
 
     @Field(() => [Activity], { nullable: true })
     @OneToMany(type => Activity, activity => activity.model)
-    @JoinColumn()
     activities?: Activity[];
 
     @Column(type => Timestamp)
