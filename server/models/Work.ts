@@ -3,12 +3,12 @@
  */
 
 import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  BaseEntity,
-  CreateDateColumn,
-  UpdateDateColumn
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    BaseEntity,
+    CreateDateColumn,
+    UpdateDateColumn
 } from "typeorm";
 
 import { ObjectType, Field, ID, Int } from "type-graphql";

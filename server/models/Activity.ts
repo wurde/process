@@ -3,13 +3,13 @@
  */
 
 import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  BaseEntity,
-  ManyToMany,
-  CreateDateColumn,
-  UpdateDateColumn
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    BaseEntity,
+    ManyToMany,
+    CreateDateColumn,
+    UpdateDateColumn
 } from "typeorm";
 
 import { MinLength, MaxLength } from "class-validator";
