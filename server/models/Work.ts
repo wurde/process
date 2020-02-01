@@ -49,6 +49,6 @@ export class Work extends BaseEntity {
     @Field(() => Int)
     duration: number;
 
-    @Column(type => Timestamp)
+    @Column(() => Timestamp)
     timestamp: Timestamp;
 }

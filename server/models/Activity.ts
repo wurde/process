@@ -30,7 +30,7 @@ export class Activity extends BaseEntity {
     id: number;
 
     @Field(() => Model)
-    @ManyToOne(type => Model, { nullable: false })
+    @ManyToOne(() => Model, { nullable: false })
     @JoinColumn({ name: "model_id" })
     model: Model;
 
@@ -45,10 +45,10 @@ export class Activity extends BaseEntity {
     description?: string;
 
     @Field(() => [Activity], { nullable: true })
-    @ManyToMany(type => Activity)
+    @ManyToMany(() => Activity)
     @JoinTable({ name: "next_activities" })
     nextActivities?: Activity[];
 
-    @Column(type => Timestamp)
+    @Column(() => Timestamp)
     timestamp: Timestamp;
 }

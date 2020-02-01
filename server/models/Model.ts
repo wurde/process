@@ -40,15 +40,15 @@ export class Model extends BaseEntity {
     description?: string;
 
     @Field(() => Activity, { nullable: true })
-    @OneToOne(type => Activity)
+    @OneToOne(() => Activity)
     @JoinColumn()
     initialActivity?: Activity;
 
     @Field(() => [Activity], { nullable: true })
-    @OneToMany(type => Activity, activity => activity.model)
+    @OneToMany(() => Activity, activity => activity.model)
     activities?: Activity[];
 
-    @Column(type => Timestamp)
+    @Column(() => Timestamp)
     timestamp: Timestamp;
 
     @Field()

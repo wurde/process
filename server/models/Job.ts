@@ -27,6 +27,6 @@ export class Job extends BaseEntity {
     @Column("int")
     modelID: number;
 
-    @Column(type => Timestamp)
+    @Column(() => Timestamp)
     timestamp: Timestamp;
 }

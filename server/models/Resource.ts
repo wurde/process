@@ -35,6 +35,6 @@ export class Resource extends BaseEntity {
     @Column("text")
     availability?: string;
 
-    @Column(type => Timestamp)
+    @Column(() => Timestamp)
     timestamp: Timestamp;
 }
