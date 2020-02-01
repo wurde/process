@@ -13,19 +13,9 @@ import { Activity } from "../models/Activity";
 
 @Resolver()
 export class ActivityResolver {
-    @Query(() => [Activity])
-    listActivities() {
-        return Activity.find();
-    }
-
     @Query(() => Activity, { nullable: true })
     findActivityByID(@Arg("id", () => Int) id: number) {
         return Activity.findOne({ id });
-    }
-
-    @Query(() => Activity, { nullable: true })
-    findActivityByTitle(@Arg("title", () => String) title: string) {
-        return Activity.find({ title });
     }
 
     @Mutation(() => Activity)
