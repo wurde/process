@@ -9,6 +9,7 @@ import {
     BaseEntity,
     ManyToOne,
     ManyToMany,
+    JoinTable,
     CreateDateColumn,
     UpdateDateColumn
 } from "typeorm";
@@ -42,9 +43,10 @@ export class Activity extends BaseEntity {
     @Column("text", { nullable: true })
     description?: string;
 
-    // @Field(() => [Activity])
-    // @ManyToMany(type => Activity)
-    // nextActivities: Activity[];
+    @Field(() => [Activity])
+    @ManyToMany(type => Activity)
+    @JoinTable({ name: "next_activities" })
+    nextActivities: Activity[];
 
     @Field({ nullable: true })
     @CreateDateColumn()
