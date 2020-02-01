@@ -35,12 +35,8 @@ export class Activity extends BaseEntity {
     title: string;
 
     @Field({ nullable: true })
-    @MinLength(15, {
-      message: "Description is too short."
-    })
-    @MaxLength(300, {
-      message: "Description is too long."
-    })
+    @MinLength(15, { message: "Description is too short." })
+    @MaxLength(300, { message: "Description is too long." })
     @Column("text", { nullable: true })
     description?: string;
 

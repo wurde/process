@@ -29,19 +29,13 @@ export class Model extends BaseEntity {
     id: number;
 
     @Field()
-    @MaxLength(100, {
-        message: "Title is too long."
-    })
+    @MaxLength(100, { message: "Title is too long." })
     @Column("text")
     title: string;
 
     @Field({ nullable: true })
-    @MinLength(15, {
-        message: "Description is too short."
-    })
-    @MaxLength(300, {
-        message: "Description is too long."
-    })
+    @MinLength(15, { message: "Description is too short." })
+    @MaxLength(300, { message: "Description is too long." })
     @Column({ type: "text", nullable: true })
     description?: string;
 
