@@ -6,6 +6,7 @@ import { Resolver, Query, Mutation, Arg, Int } from "type-graphql";
 import { CreateActivityInput } from "../inputs/CreateActivityInput";
 import { UpdateActivityInput } from "../inputs/UpdateActivityInput";
 import { Activity } from "../models/Activity";
+import { Model } from "../models/Model";
 
 /**
  * Define resolver
@@ -20,6 +21,9 @@ export class ActivityResolver {
 
     @Mutation(() => Activity)
     async createActivity(@Arg("input") input: CreateActivityInput) {
+        let m = await Model.findOne(input.modelID);
+        if (!m) throw new Error("Model not found.")
+
         let a = new Activity();
         a = Object.assign(a, input);
         await a.save();
