@@ -30,7 +30,7 @@ export class Activity extends BaseEntity {
     id: number;
 
     @Field(() => Model)
-    @ManyToOne(type => Model)
+    @ManyToOne(type => Model, { nullable: false })
     @JoinColumn({ name: "model_id" })
     model: Model;
 
