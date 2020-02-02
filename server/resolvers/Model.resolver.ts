@@ -72,6 +72,12 @@ export class ModelResolver {
 
     @FieldResolver()
     activities(@Root() model: Model) {
-        return Activity.find({ model_id: model.id })
+        return Activity.find({ model_id: model.id });
+    }
+
+    @FieldResolver()
+    initialActivity(@Root() model: Model) {
+        console.log({ model });
+        return Activity.findOne(model.initialActivityId);
     }
 }

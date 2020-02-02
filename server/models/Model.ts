@@ -7,7 +7,9 @@ import {
     PrimaryGeneratedColumn,
     Column,
     BaseEntity,
-    OneToMany
+    OneToMany,
+    OneToOne,
+    JoinColumn
 } from "typeorm";
 
 import { MinLength, MaxLength } from "class-validator";
@@ -31,6 +33,14 @@ export class Model extends BaseEntity {
         cascade: ["insert"]
     })
     activities: Activity[];
+
+    @Field(() => Activity, { nullable: true })
+    @OneToOne(() => Activity, activity => activity.model)
+    @JoinColumn()
+    initialActivity?: Activity;
+
+    @Field({ nullable: true })
+    initialActivityId?: number;
 
     @Field()
     @MaxLength(100, { message: "Title is too long." })

@@ -23,4 +23,7 @@ export class UpdateModelInput implements Partial<Model> {
         message: "Description is too long."
     })
     description?: string;
+
+    @Field({ nullable: true })
+    initialActivityId?: number;
 }
