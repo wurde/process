@@ -11,16 +11,11 @@ import { Query, Resolver } from "type-graphql";
 @Resolver()
 export class Hello {
     @Query(() => String, {
-        name: 'helloWorld',
+        name: 'hi',
         description: 'A default greeting.',
         nullable: true
     })
     hello(): string {
         return 'Hello, world!';
-    }
-
-    @Query(() => String)
-    hi(): string {
-        return 'Hi!';
     }
 }
