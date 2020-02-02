@@ -15,7 +15,7 @@ import { Model } from "../models/Model";
 export class ResourceResolver {
     @Query(() => [Resource])
     listResources(@Arg("modelID", () => Int) id: number): Promise<Resource> {
-        return Resource.find({ model_id: modelID });
+        return Resource.find({ model_id: id });
     }
 
     @Mutation(() => Resource)

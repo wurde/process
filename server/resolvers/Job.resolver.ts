@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import { Resolver, Query, Mutation, Arg, FieldResolver, Root } from "type-graphql";
+import { Resolver, Query, Mutation, Arg, FieldResolver, Root, Int } from "type-graphql";
 import { Model } from "../models/Model";
 import { Job } from "../models/Job";
 import { Work } from "../models/Work";
@@ -14,8 +14,8 @@ import { Work } from "../models/Work";
 @Resolver(of => Job)
 export class JobResolver {
     @Query(() => [Job])
-    listJobs() {
-        return Job.find();
+    listJobs(@Arg("modelID", () => Int) id: number): Promise<Job> {
+        return Job.find({ model_id: id });
     }
 
     @Mutation(() => Job)

@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import { Resolver, Query } from "type-graphql";
+import { Resolver, Query, Arg, Int } from "type-graphql";
 import { Work } from "../models/Work";
 
 /**
@@ -12,7 +12,7 @@ import { Work } from "../models/Work";
 @Resolver(of => Work)
 export class WorkResolver {
     @Query(() => [Work])
-    listWork() {
-        return Work.find();
+    listWork(@Arg("modelID", () => Int) id: number): Promise<Work> {
+        return Work.find({ model_id: id });
     }
 }
