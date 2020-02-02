@@ -26,9 +26,9 @@ import { Model } from "../models/Model";
 
 @Resolver(of => Activity)
 export class ActivityResolver {
-    @Query(() => Activity, { nullable: true })
-    findActivityByID(@Arg("id", () => Int) id: number): Promise<Activity> {
-        return Activity.findOne({ id });
+    @Query(() => [Activity])
+    listActivities(@Arg("modelID", () => Int) id: number): Promise<Activity> {
+        return Activity.find({ model_id: id });
     }
 
     @Mutation(() => Activity)
@@ -79,10 +79,10 @@ export class ActivityResolver {
         let r = await Resource.findOne(resourceId);
         if (a && r) {
             await getConnection()
-            .createQueryBuilder()
-            .relation(Activity, "resources")
-            .of(a)
-            .add(r)
+                .createQueryBuilder()
+                .relation(Activity, "resources")
+                .of(a)
+                .add(r);
             return true;
         }
         return false;
