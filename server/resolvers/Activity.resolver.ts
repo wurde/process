@@ -11,6 +11,9 @@ import {
     FieldResolver,
     Root
 } from "type-graphql";
+
+import { getConnection } from "typeorm";
+
 import { CreateActivityInput } from "../inputs/CreateActivityInput";
 import { UpdateActivityInput } from "../inputs/UpdateActivityInput";
 import { Activity } from "../models/Activity";
@@ -75,9 +78,11 @@ export class ActivityResolver {
         let a = await Activity.findOne(activityId);
         let r = await Resource.findOne(resourceId);
         if (a && r) {
-            console.log({a, r});
-            a.resources = [r, ...a.resources]
-            await a.save();
+            await getConnection()
+            .createQueryBuilder()
+            .relation(Activity, "resources")
+            .of(a)
+            .add(r)
             return true;
         }
         return false;
@@ -85,9 +90,10 @@ export class ActivityResolver {
 
     @FieldResolver()
     resources(@Root() activity: Activity) {
-        console.log({ activity });
-        // return Resource.find({ activity_id: activity.id });
-        // join table?
-        return [];
+        return getConnection()
+            .createQueryBuilder()
+            .relation(Activity, "resources")
+            .of(activity)
+            .loadMany();
     }
 }
