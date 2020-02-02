@@ -16,6 +16,7 @@ import { MinLength, MaxLength } from "class-validator";
 import { ObjectType, Field, Int, Root } from "type-graphql";
 import { Timestamp } from "./embed/Timestamp";
 import { Activity } from "./Activity";
+import { Job } from "./Job";
 
 /**
  * Define model
@@ -33,6 +34,12 @@ export class Model extends BaseEntity {
         cascade: ["insert"]
     })
     activities: Activity[];
+
+    @Field(() => [Job])
+    @OneToMany(() => Job, job => job.model, {
+        cascade: ["insert"]
+    })
+    jobs: Job[];
 
     @Field(() => Activity, { nullable: true })
     @OneToOne(() => Activity, activity => activity.model)

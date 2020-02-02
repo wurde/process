@@ -6,11 +6,17 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
+    ManyToOne,
+    OneToMany,
     BaseEntity
 } from "typeorm";
 
 import { ObjectType, Field, ID, Int } from "type-graphql";
 import { Timestamp } from "./embed/Timestamp";
+import { ManyToOneCascade } from "./helpers/ManyToOneCascade";
+import { Model } from "./Model";
+import { Activity } from "./Activity";
+import { Job } from "./Job";
 import { Resource } from "./Resource";
 
 /**
@@ -24,16 +30,29 @@ export class Work extends BaseEntity {
     @PrimaryGeneratedColumn()
     readonly id: number;
 
-    @Field(() => ID)
-    modelID: number;
+    @Field(() => Model)
+    @ManyToOne(() => Model, {
+        nullable: true,
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
+    })
+    model: Model;
 
-    @Field(() => ID)
-    @Column("int")
-    activityID: number;
+    @Field(() => Job)
+    @ManyToOne(() => Job, {
+        nullable: true,
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
+    })
+    job: Job;
 
-    @Field(() => ID)
-    @Column("int")
-    jobID: number;
+    @Field(() => Activity)
+    @ManyToOneCascade(Activity)
+    activity: Activity;
+
+    @Field(() => [Resource])
+    @OneToMany(() => Resource, resource => resource.model)
+    resources: Resource[];
 
     @Field()
     @Column("datetime")
@@ -42,9 +61,6 @@ export class Work extends BaseEntity {
     @Field({ nullable: true })
     @Column("datetime")
     endAt?: Date;
-
-    @Field(() => [Resource])
-    resources: Resource[];
 
     @Field(() => Int)
     duration: number;

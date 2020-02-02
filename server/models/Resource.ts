@@ -9,7 +9,7 @@ import {
     BaseEntity
 } from "typeorm";
 
-import { ObjectType, Field, ID } from "type-graphql";
+import { ObjectType, Field, Int } from "type-graphql";
 import { Timestamp } from "./embed/Timestamp";
 
 /**
@@ -19,7 +19,7 @@ import { Timestamp } from "./embed/Timestamp";
 @ObjectType({ description: "A process resource." })
 @Entity("resources")
 export class Resource extends BaseEntity {
-    @Field(() => ID)
+    @Field(() => Int)
     @PrimaryGeneratedColumn()
     readonly id: number;
 
