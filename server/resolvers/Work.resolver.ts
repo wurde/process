@@ -30,4 +30,14 @@ export class WorkResolver {
         await w.save();
         return w;
     }
+
+    @Mutation(() => Boolean)
+    async removeWork(@Arg("id", () => Int) id: number): boolean {
+        let w = await Work.findOne(id);
+        if (w) {
+            await w.remove();
+            return true;
+        }
+        return false;
+    }
 }

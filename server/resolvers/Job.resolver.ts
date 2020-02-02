@@ -33,4 +33,14 @@ export class JobResolver {
     work(@Root() job: Job) {
         return Work.find({ job_id: job.id });
     }
+
+    @Mutation(() => Boolean)
+    async removeJob(@Arg("id", () => Int) id: number): boolean {
+        let j = await Job.findOne(id);
+        if (j) {
+            await j.remove();
+            return true;
+        }
+        return false;
+    }
 }

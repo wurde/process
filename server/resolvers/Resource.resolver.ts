@@ -30,4 +30,14 @@ export class ResourceResolver {
         await r.save();
         return r;
     }
+
+    @Mutation(() => Boolean)
+    async removeResource(@Arg("id", () => Int) id: number): boolean {
+        let r = await Resource.findOne(id);
+        if (r) {
+            await r.remove();
+            return true;
+        }
+        return false;
+    }
 }
