@@ -8,8 +8,6 @@ import {
     Column,
     BaseEntity,
     ManyToOne,
-    ManyToMany,
-    JoinTable,
     JoinColumn
 } from "typeorm";
 
@@ -27,10 +25,13 @@ import { Model } from "./Model";
 export class Activity extends BaseEntity {
     @Field(() => Int)
     @PrimaryGeneratedColumn()
-    id: number;
+    readonly id: number;
 
     @Field(() => Model)
-    @ManyToOne(() => Model, { nullable: false })
+    @ManyToOne(() => Model, {
+        nullable: false,
+        onDelete: "CASCADE"
+    })
     @JoinColumn({ name: "model_id" })
     model: Model;
 
@@ -43,11 +44,6 @@ export class Activity extends BaseEntity {
     @MaxLength(300, { message: "Description is too long." })
     @Column("text", { nullable: true })
     description?: string;
-
-    @Field(() => [Activity], { nullable: true })
-    @ManyToMany(() => Activity)
-    @JoinTable({ name: "next_activities" })
-    nextActivities?: Activity[];
 
     @Column(() => Timestamp)
     timestamp: Timestamp;

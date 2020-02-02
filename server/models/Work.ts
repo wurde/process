@@ -22,7 +22,7 @@ import { Resource } from "./Resource";
 export class Work extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn()
-    id: number;
+    readonly id: number;
 
     @Field(() => ID)
     modelID: number;

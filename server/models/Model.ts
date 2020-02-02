@@ -7,9 +7,7 @@ import {
     PrimaryGeneratedColumn,
     Column,
     BaseEntity,
-    OneToOne,
-    OneToMany,
-    JoinColumn
+    OneToMany
 } from "typeorm";
 
 import { MinLength, MaxLength } from "class-validator";
@@ -26,7 +24,13 @@ import { Activity } from "./Activity";
 export class Model extends BaseEntity {
     @Field(() => Int)
     @PrimaryGeneratedColumn()
-    id: number;
+    readonly id: number;
+
+    @Field(() => [Activity])
+    @OneToMany(() => Activity, activity => activity.model, {
+        cascade: ["insert"]
+    })
+    activities: Activity[];
 
     @Field()
     @MaxLength(100, { message: "Title is too long." })
@@ -38,15 +42,6 @@ export class Model extends BaseEntity {
     @MaxLength(300, { message: "Description is too long." })
     @Column({ type: "text", nullable: true })
     description?: string;
-
-    @Field(() => Activity, { nullable: true })
-    @OneToOne(() => Activity)
-    @JoinColumn()
-    initialActivity?: Activity;
-
-    @Field(() => [Activity], { nullable: true })
-    @OneToMany(() => Activity, activity => activity.model)
-    activities?: Activity[];
 
     @Column(() => Timestamp)
     timestamp: Timestamp;

@@ -21,7 +21,7 @@ import { Timestamp } from "./embed/Timestamp";
 export class Job extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn()
-    id: number;
+    readonly id: number;
 
     @Field(() => ID)
     @Column("int")

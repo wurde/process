@@ -2,16 +2,26 @@
  * Dependencies
  */
 
-import { Resolver, Query, Mutation, Arg, Int } from "type-graphql";
+import {
+    Resolver,
+    Query,
+    Mutation,
+    Arg,
+    FieldResolver,
+    Root,
+    Int
+} from "type-graphql";
+
 import { CreateModelInput } from "../inputs/CreateModelInput";
 import { UpdateModelInput } from "../inputs/UpdateModelInput";
 import { Model } from "../models/Model";
+import { Activity } from "../models/Activity";
 
 /**
  * Define resolver
  */
 
-@Resolver()
+@Resolver(of => Model)
 export class ModelResolver {
     @Query(() => [Model])
     listModels(): Promise<Model[]> {
@@ -58,5 +68,10 @@ export class ModelResolver {
             return true;
         }
         return false;
+    }
+
+    @FieldResolver()
+    activities(@Root() model: Model) {
+        return Activity.find({ model_id: model.id })
     }
 }
