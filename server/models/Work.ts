@@ -8,12 +8,12 @@ import {
     Column,
     ManyToOne,
     OneToMany,
+    JoinColumn,
     BaseEntity
 } from "typeorm";
 
-import { ObjectType, Field, ID, Int } from "type-graphql";
+import { ObjectType, Field, Int } from "type-graphql";
 import { Timestamp } from "./embed/Timestamp";
-import { ManyToOneCascade } from "./helpers/ManyToOneCascade";
 import { Model } from "./Model";
 import { Activity } from "./Activity";
 import { Job } from "./Job";
@@ -26,7 +26,7 @@ import { Resource } from "./Resource";
 @ObjectType({ description: "A unit of work." })
 @Entity()
 export class Work extends BaseEntity {
-    @Field(() => ID)
+    @Field(() => Int)
     @PrimaryGeneratedColumn()
     readonly id: number;
 
@@ -36,6 +36,7 @@ export class Work extends BaseEntity {
         onDelete: "CASCADE",
         onUpdate: "CASCADE"
     })
+    @JoinColumn({ name: "model_id" })
     model: Model;
 
     @Field(() => Job)
@@ -44,14 +45,22 @@ export class Work extends BaseEntity {
         onDelete: "CASCADE",
         onUpdate: "CASCADE"
     })
+    @JoinColumn({ name: "job_id" })
     job: Job;
 
     @Field(() => Activity)
-    @ManyToOneCascade(Activity)
+    @ManyToOne(() => Job, {
+        nullable: true,
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
+    })
     activity: Activity;
 
     @Field(() => [Resource])
-    @OneToMany(() => Resource, resource => resource.model)
+    @OneToMany(
+        () => Resource,
+        resource => resource.model
+    )
     resources: Resource[];
 
     @Field()

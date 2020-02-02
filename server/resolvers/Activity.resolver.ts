@@ -12,7 +12,7 @@ import { Model } from "../models/Model";
  * Define resolver
  */
 
-@Resolver()
+@Resolver(of => Activity)
 export class ActivityResolver {
     @Query(() => Activity, { nullable: true })
     findActivityByID(@Arg("id", () => Int) id: number): Promise<Activity> {

@@ -2,15 +2,16 @@
  * Dependencies
  */
 
-import { Resolver, Query, Mutation, Arg } from "type-graphql";
+import { Resolver, Query, Mutation, Arg, FieldResolver, Root } from "type-graphql";
 import { Model } from "../models/Model";
 import { Job } from "../models/Job";
+import { Work } from "../models/Work";
 
 /**
  * Define resolver
  */
 
-@Resolver()
+@Resolver(of => Job)
 export class JobResolver {
     @Query(() => [Job])
     listJobs() {
@@ -26,5 +27,10 @@ export class JobResolver {
         j.model = m;
         await j.save();
         return j;
+    }
+
+    @FieldResolver()
+    work(@Root() job: Job) {
+        return Work.find({ job_id: job.id });
     }
 }

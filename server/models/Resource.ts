@@ -28,11 +28,11 @@ export class Resource extends BaseEntity {
     title: string;
 
     @Field({ nullable: true })
-    @Column("text")
+    @Column("text", { nullable: true })
     description?: string;
 
     @Field({ nullable: true })
-    @Column("text")
+    @Column("text", { nullable: true })
     availability?: string;
 
     @Column(() => Timestamp)

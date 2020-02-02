@@ -8,12 +8,14 @@ import {
     Column,
     BaseEntity,
     ManyToOne,
+    OneToMany,
     JoinColumn
 } from "typeorm";
 
 import { ObjectType, Field, Int } from "type-graphql";
 import { Timestamp } from "./embed/Timestamp";
 import { Model } from "./Model";
+import { Work } from "./Work";
 
 /**
  * Define model
@@ -34,6 +36,12 @@ export class Job extends BaseEntity {
     })
     @JoinColumn({ name: "model_id" })
     model: Model;
+
+    @Field(() => [Work])
+    @OneToMany(() => Work, work => work.job, {
+        cascade: ["insert"]
+    })
+    work: Work[];
 
     @Column(() => Timestamp)
     timestamp: Timestamp;

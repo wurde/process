@@ -9,7 +9,7 @@ import { Work } from "../models/Work";
  * Define resolver
  */
 
-@Resolver()
+@Resolver(of => Work)
 export class WorkResolver {
     @Query(() => [Work])
     listWork() {
