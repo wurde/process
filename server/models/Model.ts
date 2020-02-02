@@ -17,6 +17,7 @@ import { ObjectType, Field, Int, Root } from "type-graphql";
 import { Timestamp } from "./embed/Timestamp";
 import { Activity } from "./Activity";
 import { Job } from "./Job";
+import { Resource } from "./Resource";
 
 /**
  * Define model
@@ -34,6 +35,12 @@ export class Model extends BaseEntity {
         cascade: ["insert"]
     })
     activities: Activity[];
+
+    @Field(() => [Resource])
+    @OneToMany(() => Resource, resource => resource.model, {
+        cascade: ["insert"]
+    })
+    resources: Resource[];
 
     @Field(() => [Job])
     @OneToMany(() => Job, job => job.model, {

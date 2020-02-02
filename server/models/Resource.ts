@@ -6,11 +6,14 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
+    ManyToOne,
+    JoinColumn,
     BaseEntity
 } from "typeorm";
 
 import { ObjectType, Field, Int } from "type-graphql";
 import { Timestamp } from "./embed/Timestamp";
+import { Model } from "./Model";
 
 /**
  * Define model
@@ -22,6 +25,15 @@ export class Resource extends BaseEntity {
     @Field(() => Int)
     @PrimaryGeneratedColumn()
     readonly id: number;
+
+    @Field(() => Model)
+    @ManyToOne(() => Model, {
+        nullable: false,
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
+    })
+    @JoinColumn({ name: "model_id" })
+    model: Model;
 
     @Field()
     @Column("text")

@@ -2,7 +2,7 @@
  * Dependencies
  */
 
-import { InputType, Field } from "type-graphql";
+import { InputType, Field, Int } from "type-graphql";
 import { MinLength, MaxLength } from "class-validator";
 import { Resource } from "../models/Resource";
 
@@ -12,6 +12,9 @@ import { Resource } from "../models/Resource";
 
 @InputType({ description: "New resource data." })
 export class CreateResourceInput implements Partial<Resource> {
+    @Field(() => Int)
+    modelID: number;
+
     @Field()
     title: string;
 

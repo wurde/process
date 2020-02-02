@@ -17,6 +17,7 @@ import { UpdateModelInput } from "../inputs/UpdateModelInput";
 import { Model } from "../models/Model";
 import { Activity } from "../models/Activity";
 import { Job } from "../models/Job";
+import { Resource } from "../models/Resource";
 
 /**
  * Define resolver
@@ -74,6 +75,11 @@ export class ModelResolver {
     @FieldResolver()
     activities(@Root() model: Model) {
         return Activity.find({ model_id: model.id });
+    }
+
+    @FieldResolver()
+    resources(@Root() model: Model) {
+        return Resource.find({ model_id: model.id });
     }
 
     @FieldResolver()
