@@ -57,22 +57,22 @@ export class Work extends BaseEntity {
     activity: Activity;
 
     @Field(() => [Resource])
-    @OneToMany(
-        () => Resource,
+    @OneToMany(() => Resource,
         resource => resource.model
     )
     resources: Resource[];
 
-    @Field()
-    @Column("datetime")
-    startAt: Date;
+    @Field({ nullable: true })
+    @Column("datetime", { nullable: true })
+    startAt?: Date;
 
     @Field({ nullable: true })
-    @Column("datetime")
+    @Column("datetime", { nullable: true })
     endAt?: Date;
 
-    @Field(() => Int)
-    duration: number;
+    @Field(() => Int, { nullable: true })
+    @Column({ nullable: true })
+    duration?: number;
 
     @Column(() => Timestamp)
     timestamp: Timestamp;
